@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Api documentation</title>
+	<link rel="stylesheet" href="../static/style/styles.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/hybrid.min.css">
+</head>
+<body>
+	<div class="container">
+		<div class="sidebar">
+			<h4>Documentation api:</h4>
+			<nav>
+				<ul>
+				<li>
+					<a href="#tiktok">Tiktok</a>
+				</li>
+				<li>
+					<a href="#instagram">Instagram</a>
+				</li>
+				</ul>
+			</nav>
+		</div>
+		<div class="content">
+			<div id="tiktok">
+				<div class="note">Note: File save in server only 3 minutes</div>
+				<p class="count">Request count: {{ count }}</p>
+				<li class="title">Example using api tiktok downloader:</li>
+				<div class="tab">	
+					<p class="d">Requests: </p>
+					<pre class="code">
+						<div class="language">PYTHON</div>
+						<code class="language-python">
+import requests, json
+
+def fetch(url):
+	data = {
+		"url": url
+	}
+
+	response = requests.post("http://brutalx.my.id/api/tiktok/", json=data).json()
+	return response
+
+url = "https://www.tiktok.com/@dmaz_herex0/video/7370639185599876358?"
+data = fetch(url)
+print(data)
+						</code>
+					</pre>
+					<p class="d">Response: </p>
+					<pre class="code">
+						<div class="language">JSON</div>
+						<code class="language-json">
+{
+    "author":{
+        "nickname": "Naomi",
+        "username": "naomineo"
+    },
+    "media":{
+        "music": "https://brutalx.my.id/download/music/6676e74a710859fac58bf5f3",
+        "video": "https://brutalx.my.id/download/video/6676e749710859fac58bf5f0"
+    },
+    "status": "succes"
+}
+						</code>
+					</pre>
+				</div>
+			</div>
+			<div id="instagram">
+				<li class="title">Example using api instagram downloader:</li>
+				<div class="tab">
+					<p class="d">Requests: </p>
+					<pre class="code">
+						<div class="language">PYTHON</div>
+						<code class="language-python">
+import requests, json
+
+def fetch(url, cookies):
+	data = {
+		"url": url,
+		"cookies": cookies
+	}
+
+	response = requests.post("http://brutalx.my.id/api/instagram/", json=data).json()
+	return response
+
+url = "https://www.instagram.com/p/C7_l9qUywlC/?__a=1&__d=dis"
+cookies = 'your_cookie_instagram'
+data = fetch(url, cookies)
+print(data)
+						</code>
+					</pre>
+					<p class="d">Response: </p>
+					<pre class="code">
+						<div class="language">JSON</div>
+						<code class="language-json">
+{
+    "author":{
+        "username": "imammauldn"
+    },
+    "media":{
+        "image":{
+            "url": "https://brutalx.my.id/image/6676f255d5c2af5fba97c315"
+        },
+        "music":{
+            "url": "https://brutalx.my.id/music/6676f25ad5c2af5fba97c317"
+        }
+    },
+    "product_type": "feed"
+}
+						</code>
+					</pre>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+</body>
+</html>
